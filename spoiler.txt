@@ -1,0 +1,21 @@
+-----------------------------
+3.9, No 4.
+-----------------------------
+
+The formula has the form of:
+
+   some A ==> (forall i: 0<=i : a[i]=a[0])
+   
+You can prove this by assuming A, and then proving the RHS
+of the implication above.  As hinted, you can prove the latter
+using induction. Now, the Induction rule for natural numbers 
+look like this:
+
+    (1)    P 0
+    (2)   (forall n : n>=0 : P n ==> P (n + 1))
+          --------------------------------------
+          (forall n : n>=0 : P n)
+          
+And what is "P" in this case?
+
+Spoiler: define P i to represent (a[i]=a[0]). 

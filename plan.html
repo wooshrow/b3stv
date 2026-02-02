@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Software Testing &amp; Verification Course</title>
+  <meta name="description" content="home of the STV Course">
+  <meta name="author"      content="foo">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/skeleton.css">
+  <link rel="stylesheet" href="./css/custom.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="./images/favicon.png">
+
+</head>
+<body>
+<!-- Primary Page Layout –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<div class="container">
+<div id="fixheader"></div>
+ <!-- this script will write the header (2 rows) -->
+<script src="./header.js"></script>
+
+<div class="row"> <!-- row 3 -->
+
+<h4>Course Plan 24/25</h4>
+
+<table id="courseplan" summary="course plan">
+  <thead>
+     <tr class=col2>
+     <th scope="col">Week</th>
+     <th scope="col">Lectures & theory work-sessions</th>
+     <th scope="col">Theory assignments (graded!)</th>
+     <th scope="col">Project</th>
+     <th scope="col">Deadlines</th>
+     </tr>
+  </thead>
+  <tfoot>
+     <tr>
+     <td colspan="5"><em>Note: retake should be on 7th July, 13:30 - 16:30, in Educ-Alfa. BUT check your timetable to make sure.</em></td>
+     </tr>
+  </tfoot>
+  <tbody>
+  <!---- ********* -->
+  <tr>
+ 	  <td><div class="celled">1(17)</div>  [ThN]</td>
+    <td>
+       &#9728; Unit testing.
+       <br>&#9728; Specifying programs.
+       <br>&#9728; Test adequacy (with graph-based coverage).
+
+       <br><br>We will also kick off the STV Testing Project
+       <a href="./supplements/STV_Project2425.pdf">Testing Project</a>.
+       | <a href="./slides/Project.pdf">slides</a>
+
+       <br><br>Chapters to read: A&O (Your book "Introduction to Software Testing by Ammann & Offutt)
+       Ch1, 2.1 - 2.3 (2nd Ed. Ch. 2,3,5,7.1 – 7.3)
+
+       <br><br><b>Slides:</b>
+          <a href="./slides/organization.pptx">organization</a>
+          (<a href="./slides/organization.pdf">pdf</a>) |
+          <a href="./slides/ut.pptx">unit-testing</a>
+          (<a href="./slides/ut.pdf">pdf</a>)  |
+          <a href="./slides/gbt.pptx">gb-testing</a>
+          (<a href="./slides/gbt.pdf">pdf</a>) |
+
+    </td>
+
+    <td>
+       <a href=supplements/HW_testing.pdf>HW-set-1</a>.
+    </td>
+    <td>
+
+       <a href="./supplements/STV_Project2425.pdf">Testing Project</a>.
+
+       <br><br>Monday: form your team (3 persons) if you have not done so.
+       By thursday you should be in a team
+       and in this week you should already have started coding and testing.
+    </td>
+    <td>
+      HW-set-1: Thursday 24th April, 24:00.
+    </td>
+  </tr>
+  <!---- ********* -->
+  <tr>
+   	<td><div class="celled">2(18)</div></td>
+    <td>
+       &#9728; black box testing (partition-based and combinatoric).
+       <br> &#9728; Data-flow-based testing.
+
+       <br><br>Chapters to read: A&O :
+       Ch. 2.1 - 2.3 (2nd Ed. 7.1 – 7.3),
+       <br>Ch. 4, Ch. 2.2.2 (2nd Ed. Ch. 6, Ch. 7.2.3)
+       <br>Ch. 2.4.2 (2nd Ed. Ch. 7.4.2).
+
+
+       <br><br><b>Slides:</b>
+          <a href="./slides/gbt.pptx">gb-testing</a>
+          (<a href="./slides/gbt.pdf">pdf</a>) |
+          <a href="./slides/bbt.pptx">bb-testing</a>
+          (<a href="./slides/bbt.pdf">pdf</a>) |
+          <a href="./slides/dfbt.pptx">df-testing</a> (<a href="./slides/dfbt.pdf">pdf</a>)
+
+    </td>
+    <td>
+       <a href=supplements/HW_testing.pdf>HW-set-2</a>.
+    </td>
+    <td>Continue with the Testing Project. Work on the components of
+      GameLogic and unit-test them.
+    </td>
+    <td>
+      HW-set-2: thursday 1st May, 24:00.
+    </td>
+  </tr>
+  <!---- ********* -->
+  <tr>
+   	<td><div class="celled">3(19)</div></td>
+    <td>
+       <br>&#9728; Integration testing.
+
+
+       <br><br>Chapters to read: A&O Ch. 2.2.2, 2.4.2, 7.1 (2nd Ed. Ch. 7.2.3, 7.4.2, but unfortunately
+       there is no replacement for 7.1 in the 2nd Ed.).
+
+
+       <br><br><b>Slides:</b>
+
+         <a href="./slides/dfbt.pptx">df-testing</a> (<a href="./slides/dfbt.pdf">pdf</a>)
+
+    </td>
+    <td>
+       <a href=supplements/HW_testing.pdf>HW-set-3</a>.
+	 </td>
+    <td>Continue with the Testing Project.
+      At the end of this week you should have <b>finished</b> coding
+      the components of GameLogic and their unit-tests.
+
+    </td>
+    <td>HW-set-3: Thursday 8th May, 24:00.</td>
+  </tr>
+  <!---- ********* -->
+  <tr>
+   	<td><div class="celled">4(20)</div></td>
+    <td>
+    Tuesday: Handling complex inputs.
+
+  	<br><br><b>slides:</b>
+        <a href="./slides/complexinput.pptx">complex input</a> (<a href="./slides/complexinput.pdf">pdf</a>)
+
+    <br><br>Thursday (during the lecture hours): we'll run an old exam to prepare you for Exam-1.
+    <br>We will keep the lab session open for questions, or for you to finish your Project,
+    if it is not finished yet.
+
+    </td>
+    <td></td>
+    <td>Continue with the Testing Project.
+      At the end of this week you should have a working game.
+      Make sure that it works well and does not crash.
+      Start working on your TestAgent, and if you do the Optional
+      part, start working on that too.
+    </td>
+    <td>
+    </td>
+  </tr>
+  <!---- ********* -->
+  <tr>
+   	<td><div class="celled">5(21)</div></td>
+    <td>
+
+      <br><br><font color=red>
+      <strike>MONDAY 19-5-2025, 09:00 - 11:30 OLYMPOS - HAL1:</strike>
+      THRUSDAY 22-5-2025, 09:00 - 11:30
+      <b>Exam-1</b> (2.5hr excl. extension)</font>
+
+      <br><br>
+
+      Tuesday:
+      <br>&#9728; Recap Predicate Logic.
+      <br>&#9728; Recap common proof strategies (e.g. proof by contradiction, case split, domain split).
+      <br>&#9728; Equational proof.
+      <br>&#9728; Correctness of functional programs.
+
+      <br><br><b>slides:</b>
+      <a href="./slides/predlogic.pptx">proofs</a>
+      (<a href="./slides/predlogic.pdf">pdf</a>)
+
+       <br><br>Chapters to read: LN (the Lecture Notes on Program Correctness)
+       Ch. 1, 2, 3, 4.
+
+    </td>
+    <td>
+       <a href="./supplements/proofasg.pdf">PART-I</a> of the Correctness Proofs assignments set.
+    </td>
+    <td>Finishing your Testing Project. Ideally midway this week
+    it should be finished.</td>
+    <td>
+      <font color=red>
+      <br><br>Sunday 25th May, 23:59 </font>:
+      DEAD LINE of the Project.
+      Submit it through Blackboard. Only one team member should submit.
+	  </td>
+  </tr>
+  <!---- ********* -->
+  <tr>
+   	<td><div class="celled">6(22)</div></td>
+    <td>
+
+      &#9728; Verifying program correctness with Hoare Logic.
+      <br> &#9728; Reduction using weakest pre-condition.
+
+      <br><br>Chapters to read: LN Ch. 5, 6.1, 6.2.
+
+        <br><br><b>Slides:</b>
+            <a href="./slides/predlogic.pptx">proofs</a>
+            (<a href="./slides/predlogic.pdf">pdf</a>) |
+            <a href="./slides/weakstrong.pdf">weak-strong</a> |
+            <a href="./slides/1_Hoare-1.pdf">Hoare logic</a>
+            <!--
+            <a href="./slides/hoare.pptx">Hoare logic</a>
+            (<a href="./slides/hoare.pdf">pdf</a>)
+            -->
+
+
+
+      <br><br><img src="./images/pineapple1.jpg" width=25><font color=green>Thursday 29th May: holiday (Ascension Day)</font>
+	  </td>
+    <td>
+      <a href="./supplements/proofasg.pdf">PART-I</a> of the Correctness Proofs assignments set.
+
+      <br><br>If you need extra exercises (they will not be graded, but solutions
+      will be provided): from the Lecture Notes,
+        Section 3.9: nr 1,
+        nr 2 a,b,c,
+        nr 4.
+        Section 4.3: nr 2,
+        Section 5.3: nr 1a, 1b, 1e,
+        Section 6.14: nr 1,5,11.
+
+        If you get stuck on Section 3.9 nr 4, check this <a href="./spoiler.txt">spoiler</a>.
+
+	  </td>
+    <td>
+    </td>
+
+    <td><font color=red>Wednesday 28th May, 24:00:</font> PART-I Correctness-Proofs-set. </td>
+  </tr>
+  <!---- ********* -->
+  <tr>
+   	<td><div class="celled">7(23)</div></td>
+    <td>
+      <br> &#9728; Dealing with loops; proving termination.
+      <br> &#9728; Dealing with loop-breaks.
+      <br> &#9728; Dealing with arrays.
+      <br> &#9728; Reducing a program-level specification to a statement-level specification.
+      <br> &#9728; Constructing invariant.
+
+      <br><br>Chapters to read: LN Ch. 6.3 - 6.12.
+
+  	  <br><br><b>Slides:</b>
+          <a href="./slides/1_Hoare-1.pdf">Hoare logic</a>
+          <!--
+          <a href="./slides/hoare.pptx">Hoare logic</a>
+          (<a href="./slides/hoare.pdf">pdf</a>) -->
+          |
+          <a href="./slides/inv.pptx">invariant</a> (<a href="./slides/inv.pdf">pdf</a>) |
+          <a href="./slides/example_proof1.pptx">a worked-out proof</a>
+          (<a href="./slides/example_proof1.pdf">pdf</a>)
+    </td>
+
+    <td>
+      No 1,2,3 (to be submitted) <a href="./supplements/proofasg.pdf">PART-II</a> of
+      the Correctness Proofs assignments set.
+      
+      <br><br>If you are done, you can continue with No. 4 to be submitted in the
+      next round.
+
+      <br><br>If you need extra exercises (will not be graded, but solutions, or at least hints
+      will be provided): Section 6.14, nr 12, 14, 15, 16.
+    </td>
+    <td></td>
+    <td>
+    </td>
+  </tr>
+  <!---- ********* -->
+  <tr>
+   	<td><div class="celled">8(24)</div></td>
+    <td>
+      &#9728; Constructing invariant.
+
+    <br><br>Chapters to read: LN Ch. 7.
+
+    <br><br><b>Slides:</b>
+       <a href="./slides/inv.pptx">invariant</a> (<a href="./slides/inv.pdf">pdf</a>)
+    </td>
+
+    <td>
+      Tuesday: continue with No-3 of <a href="./supplements/proofasg.pdf">PART-II</a> of
+      the Correctness Proofs assignments set, if you have not finished it yet.
+      Else you can move on to No 4.
+      <br><br>
+      Thursday:
+      No-4 (to be submitted) of <a href="./supplements/proofasg.pdf">PART-II</a> of
+      the Correctness Proofs assignments set.
+  	</td>
+    <td></td>
+    <td>
+      <font color=red>Wednesday 11th June, 24:00</font>: PART-II No 1,2,3 of the Correctness-Proofs-set.
+    </td>
+  </tr>
+  </tbody>
+  <!---- ********* -->
+  <tr>
+   	<td><div class="celled">9(25)</div></td>
+    <td>
+      &#9728; Handling program call.
+      <br> &#9728; Course summary and exam.
+
+    <br><br>Chapters to read: LN Ch. 7.
+
+    <br><br><b>Slides:</b>
+       <a href="./slides/call.pptx">program call</a>
+       (<a href="./slides/call.pdf">pdf</a>) |
+        <a href="./slides/revision.pdf">course-summary</a>
+    </td>
+    <td>
+        Tuesday: No-4 <a href="./supplements/proofasg.pdf">PART-II</a> of
+        the Correctness Proofs assignments set.
+
+        <br><br>Thursday: revision No-3 (if you didn't get it right) <a href="./supplements/proofasg.pdf">PART-II</a> of
+        the Correctness Proofs assignments set.
+
+
+        <br><br>Exercises you can do (not graded): Lecture Notes Section 7.5, no. 1 - 4.
+
+        <br><br>Thursday: we can look into an exam from a
+        previous year as exercise.
+	  </td>
+    <td></td>
+    <td>
+      <font color=red>Wednesday 18th June, 24:00</font>:
+         PART-II No-4 of the Correctness-Proofs-set.
+
+      <br><br><font color=red>Thursday 19th June, 24:00</font>:
+         Revision No-3 of the Correctness-Proofs-set.
+
+    </td>
+  </tr>
+  <!---- ********* -->
+  <tr>
+   	<td><div class="celled">10(26)</div></td>
+    <td><font color=red>Exam-2: MONDAY 23-6-2025 EDUC-GAMMA
+         13:30-16:30 (3h excl. extension) </font></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  </tbody>
+  </tbody>
+</table>
+
+</div>  <!-- row 3 -->
+</div><!-- container -->
+<!-- End Document –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

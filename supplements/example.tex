@@ -1,0 +1,88 @@
+\documentclass[fleqn]{article}
+
+\usepackage{a4}
+\usepackage{latexsym}
+\usepackage{pncproofmacros}
+\usepackage{lineno}
+
+\title{An example showing the use of pncproofmacros ...}
+\author{W.P.}
+
+
+\begin{document}
+
+\maketitle
+
+% turning on line-numbers to faciliate review
+\linenumbers
+
+%
+% Note: the empty lines below should be there explicitly. If you don't 
+% like it you'll have to explicitly put a latex new-line command.
+%
+
+\begin{PROOF}{main}  
+
+\ASSUME{A1}{a[n]=0}
+
+\ASSUME{A2}{(\forall i: 0\leq i<n: 0<a[j])}
+
+\ASSUME{A3}{0\leq j \leq n}
+
+\GOAL{G1}{0\leq a[j]}
+
+\begin{BODY}
+
+\item[1] \HINT{integer arithmetics}
+	\SPACE
+	\EXPR{0\leq j \leq n \ \ = \ \ 0\leq j < n \ \vee \ (j=n)}
+
+\item[2] \HINT{rewrite{A2} with 1}
+	\SPACE
+	\EXPR{0\leq j < n \ \vee \ (j=n)}
+
+\item[3] \HINT{see the subproof below}
+	\SPACE
+	\EXPR{0\leq j < n \Rightarrow 0\leq a[j]}
+
+  \begin{quote}
+  \begin{PROOF}{}
+
+	\ASSUME{A1}{0\leq j < n}
+
+	\ASSUME{G1}{0\leq a[j]}
+
+	\begin{BODY}
+
+	\item[1] \HINT{$\forall$-Elimination on top.A2 using A1}
+		\SPACE
+		\EXPR{0<a[j]}
+
+	\item[2] \HINT{arithmetics} 
+		\SPACE
+		\EXPR{0<a[j] \Rightarrow 0\leq a[j]}
+
+	\item[3] \HINT{Modus-ponens on 1,2}
+		\SPACE
+		\EXPR{0\leq a[j]}
+
+	\end{BODY}
+
+  \end{PROOF}
+  \end{quote}
+
+\item[4] \HINT{follows from A1, prove this yourself}
+	\SPACE
+	\EXPR{(j=n) \Rightarrow 0\leq a[j]}
+
+\item[5] \HINT{Case Split on 2,3,4}
+	\SPACE
+	\EXPR{0\leq a[j]}
+
+\end{BODY}
+\end{PROOF}
+
+\end{document}
+
+
+

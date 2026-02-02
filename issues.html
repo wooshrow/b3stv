@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Software Testing &amp; Verification Course</title>
+  <meta name="description" content="home of the STV Course">
+  <meta name="author"      content="foo">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/skeleton.css">
+  <link rel="stylesheet" href="./css/custom.css">
+  
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="./images/favicon.png">
+  
+</head>
+<body>
+  
+  <!-- Primary Page Layout –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+    <div id="fixheader"></div>
+    <!-- this script will write the header (2 rows) -->
+    <script src="./header.js"></script>
+    
+	<div class="row"> <!-- row 3 -->
+            
+    <h4>List of common mistakes</h4>
+    
+    <!--
+    <div  mystyle="bw2"> 
+        <hr>
+        <b>[Stick-note]</b>: <a href="./formalz.html">FORMAL-Z pilot</a>
+        <hr>
+    </div>
+    -->
+    <p><div  mystyle="bw2">
+        <h5>Proof Assignment PART-2 common mistakes</h5>
+        <blockquote>
+        
+        <ol>
+        <li> [XC] Wrong: an inference rule is applied in a context.
+            
+        <p> When you have an inference rule: 
+            
+<pre>      &phi;
+   --------
+      &psi;  
+</pre>      
+        Note that <i>inference rule</i> works one direction!
+        You use the rule above to derive &psi; when you have inferred &phi;. You need to have this &phi;
+        as a separate formula, and NOT in the context of another formula.
+        So, the following examples are all INCORRECT use of the rule:
+        
+           <ul>
+           <li> Inferring &not;&psi; from &not;&phi;
+           <li> Inferring &psi;=f from &phi;=f
+           <li> Inferring (&forall; i : &psi; : Q) from (&forall; i : &phi; : Q)
+           </ul>       
+        
+          
+                
+        <li> [TUI] Wrong: deductive inference that is technically useless.
+
+            <p>Consider this proof:
+            
+             <blockquote>
+<pre>PROOF Termination Condition 1
+[A1:] 0 &le; i &le; N  // invariant
+[A2:] ... // some other part of the invariant
+[A3:] i &lt; N // loop guard
+[G:] wp (C:=m ; found := found &or; a[i]=x ; i := i+1) (m &lt; C) 
+BEGIN
+   1. { calculating the goal G } n - (i+1) &lt; n-1  
+      // PROBLEM: this is a deductive proof. If you write this, it means you claim that 
+      // n - (i+1) &lt; n-1 is a valid conclusion. Buy you have NOT gotten so far yet. All
+      // you mean to say is that goal G is *equivalent* to n - (i+1) &lt; n-1, which is
+      // quite different than saying that n - (i+1) &lt; n-1 is valid!
+      
+   2. { rewrite 1}  n - i - 1 &lt; n-1  
+      // the same issue as above
+      
+   3. { rewrite 2 } -1 &lt; 0  ... which is trivially true, so proof done!
+      // PROBLEM: well, technically we just now derive a fact that is already known. In a deductive 
+      // proof, it is not very useful to infer the formula 3 above. Similarly, inferring "true" is
+      // also not very useful. Of course I understand that the author of this proof
+      // means to say that 1 can be rewritten to 3, and therefore 1 is a valid conclusion.
+      // But then we should not set up the proof the way it is now, which is technically wrong.
+   
+END
+</pre>                
+       </blockquote>
+       Here is how we should set up the arguments properly:
+       <blockquote>
+<pre>PROOF Termination Condition 1
+[A1:] 0 &le; i &le; N  // invariant
+[A2:] ... // some other part of the invariant
+[A3:] i &lt; N // loop guard
+[G:] wp (C:=m ; found := found &or; a[i]=x ; i := i+1) (m &lt; C) 
+BEGIN
+   1. { calculating the goal G } G  =  n - (i+1) &lt; n-1  (we treat "G" as a name)
+   2. { rewrite 1}  G  =  n - i - 1 &lt; n-1     
+   3. { rewrite 2 } G  =  -1 &lt; 0  
+   4. { 1 &lt; 0 always hold } G  
+END       
+</pre>        
+        </blockquote>   
+        </ol> 
+        </blockquote>        
+        
+        
+        <h5>Proof Assignment PART-1 common mistakes</h5>
+        
+        <blockquote>
+        <ol>
+            <li> [TMR] Wrong: <b>R</b>-typed termination metric.
+                
+                 <p>Someone came up with a termination metric that maps to <b>R</b> (real numbers). This is problematical
+                 because you can't exclude Zenonian paradox. 
+                 Similarly, don't map to <b>Q</b>; (rational numbers).
+                 For this reason, we choose to map to integers.  
+                 
+            <p><li> [UDM1] Unjustified domain merge.  
+                
+                  <P>Given a quantified formula, e.g. 
+                  <blockquote>(1) (&forall;i : 0&le;i &lt; n : b[i])</blockquote>
+                  you want to <b>rewrite</b> (that is, transforming it to something else <i>equivalent</i>) it to:
+                  <blockquote>(2) <font color=green>(&forall;i : 0&le;i &lt; j : b[i])</font>
+                      &and; 
+                      <font color=blue>(&forall;i : j&le; i &lt; n : b[i])</font></blockquote>
+                  , based on the Domain Split theorem.
+                  Note that (1) and (2) are only equivalent if 
+                  <blockquote>(3) 0&le; j &lt; n </blockquote> If you don't have (3) then obviously
+                  it is not correct to do the rewrite.
+                  
+                  <P>To show you what went wrong, here is the sequence of the rewrites, in smaller steps:
+                      
+                   <blockquote>
+                       (1) (&forall;i : 0&le;i &lt; n : b[i])
+                       
+                    <br> = // (* wrong step! *) split 0&le;i &lt; n to 0&le;i &lt; j &or; j&le;i &lt; n, based on Domain Merging thm A.4.16 
+                
+                    <br>(&forall;i :0&le;i &lt; j &or; j&le;i &lt; n : b[i])
+                     
+                    <br> = // Domain Split (thm A.4.12)
+                    
+                    <br>(2) 
+                        (&forall;i : 0&le;i &lt; j : b[i]) &and;
+                        (&forall;i : j&le;i &lt; n : b[i])
+                    
+                    </blockquote>        
+                    
+                    The problematic step  is marked above. It uses the theorem Domain Merging A.4.16, but notice
+                    that the step requires condition (3). If you have it, it's fine. If you don't then the step
+                    is not justified.  
+                    
+            <p><li> [UDM2] Another case of unjustified domain merge.    
+                
+                Someone wrote this proof:
+                
+                <blockquote>
+<pre>PROOF main
+[A1] &not;(&forall; i: 0&le; i &lt; n : b[i]) 
+[A2] (&forall; i: j&le; i &lt; n : b[i])    
+[G:] &not;(&forall; i: 0&le; i &lt; j : b[i]) 
+BEGIN
+(1) { see the proof below } (&forall; i: 0&le; i &lt; j : b[i]) &rArr; false
+       PROOF sub
+       [A1:] (&forall; i: 0&le; i &lt; j : b[i])
+       [G:] false
+       BEGIN
+       (1) {conjunction of sub.A1 and main.A2} (&forall; i: 0&le; i &lt; j : b[i]) &and; (&forall; i: j&le; i &lt; n : b[i])   // ... so far so good
+       (2) {reverse domain split on (1)} (&forall; i: 0&le; i &lt; j &or; j&le; i &lt; n : b[i])  // ... also good
+       
+       (3) { Domain Merging (Thm A.4.16) on 2 } (&forall; i: 0&le; i &lt; n : b[i])
+           // MISTAKE! if look again at Thm A.4.16, it says that the two domain expressions:
+           //    0&le; i &lt; j &or; j&le; i &lt; n  and 0&le; i &lt; n are only equivalent
+           //    if you also know that j lies in (*) 0&le; j &le; n
+           //    However, since so far you don't have (*), step (3) is therefore incorrect.
+
+...
+</pre>
+                </blockquote>    
+                
+                    
+            <p><li>[NFAL] No free &forall;-lunch
+                
+            <p>Someone wrote this proof:            
+
+                <blockquote>
+<pre>PROOF main
+[A1] &not;(&forall; i: 0&le; i &lt; n : b[i]) 
+[A2] (&forall; i: j&le; i &lt; n : b[i])    
+[G:] &not;(&forall; i: 0&le; i &lt; j : b[i]) 
+BEGIN
+(1) { follows from A2} j&lt;n
+...
+</pre>
+                </blockquote>  
+                             
+            Well, step (1) is of course incorrect. If the domain  of &forall; in A2 is empty, we can't have
+             j&lt;n, and so far we don't know whether this domain is empty or not.               
+                                  
+            <p><li>[IUA1] Incorrect use of [ANY x] 
+                
+                 <p>You get the [SOME x] flag when you do &exist;-elimination; this can appear in any
+                 line in your proof. On the other hand, the [ANY x] flag can only appear at
+                 the beginning of a (sub-) proof. In addition to introducing a scope, [ANY x] declares
+                 your intent to generalize the conclusion of your proof to (&forall;x ...). 
+                 
+                 <br> You obtain [SOME x] when you do &exist;-elimination. See p24 of the slide <a href="slides/predlogic.pdf">predlogic</a> and LN Section 3.7.2.  
+                 <br> For more on [ANY x], see LN Section 3.71. If you are impatient, p27 of <a href="slides/predlogic.pdf">predlogic</a> shows an example (though you'll need the explanation
+                 in the LN to grasp it).
+                 
+                 <br><br>Ok, here is an example of incorrect introduction of [ANY x], taken from what some of you did:
+                 
+                 <blockquote>
+<pre>PROOF main
+[A1] &not;(&forall; i: 0&le; i &lt; n : b[i]) 
+[A2] (&forall; i: j&le; i &lt; n : b[i])    
+[G:] &not;(&forall; i: 0&le; i &lt; j : b[i]) 
+BEGIN
+(1) { see the proof below } (&forall; i: 0&le; i &lt; j : b[i]) &rArr; false
+       PROOF sub
+       [A1:] (&forall; i: 0&le; i &lt; j : b[i])
+       [G:] false
+       BEGIN
+       (1) {rewrite main.A1 with Negate-&forall; thm} (&exist; i: j&le; i &lt; n : &not; b[i]) 
+       (2) {&exist;-elimination on (1)} [SOME k] j&le; k &lt; n &and; &not; b[k]     // ... so far so good
+       
+       (3) {&forall;-elimination on main.A1} [ANY k] 0&le; k &lt; n &and; b[k]      
+           // TWO MISTAKES! (1) &forall;-elimination does not produce an [ANY..] flag 
+           //               (2) It should be 0&le; k &lt; n &rArr; b[k]  (not a conjunction)
+           //                   which then leads to a new challenge: you can't easily get rid of
+           //                   the left-side of the &rArr; ( you don't know if 0&le;j); to get the contradiction with &not; b[k] in (1)
+       
+...
+END
+</pre>                         
+                 </blockquote>
+                     
+        <p><li>[IUA2] Another case of incorrect use of [ANY x] 
+            
+        <p>Another sample proof of someone:
+            
+                 <blockquote>
+<pre>PROOF main
+[A1] &not;(&forall; i: 0 &le; i &lt; n : b[i]) 
+[A2] (&forall; i: j&le; i &lt; n : b[i])    
+[G:] &not;(&forall; i: 0&le; i &lt; j : b[i]) 
+BEGIN
+(1) { see the proof below } (&forall; i: 0&le; i &lt; j : b[i]) &rArr; false
+       PROOF sub
+       [A1:] (&forall; i: 0&le; i &lt; j : b[i])
+       [G:] false
+       BEGIN
+       (1) {rewrite main.A1 with Negate-&forall; thm} (&exist; i: j&le; i &lt; n : &not; b[i]) 
+       (2) {&exist;-elimination on (1)} [SOME k] j&le; k &lt; n &and; &not; b[k]     // ... so far so good
+       
+       (3) {&forall;-elimination on main.A1} [ANY m] 0 &le; m &lt; n &rArr; b[m]      
+           // MISTAKE: &forall;-elimination does not produce an [ANY..] flag 
+           // ADDITIONALLY, instantiating A1 for m is not useful. That is, knowing b[m] is/could be
+           //               true is not useful. In (2) you know something about b[k]. If you
+           //               hope to prove a contradiction out of this, knowing anything about b[m]
+           //               is not going to help you. Knowing something more about k does.
+       
+...
+END
+</pre>                         
+                 </blockquote>                
+                         
+                     
+        </ol>
+        </blockquote>
+    </div>    
+        
+ 
+	</div>  <!-- row 3 -->
+  </div><!-- container -->
+
+<!-- End Document –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

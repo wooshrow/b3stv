@@ -1,0 +1,105 @@
+** 
+** This is an example of a proof in the ASCII format.
+**
+
+Consider this trivial specification:
+
+   {* 0<=n *} 
+   i:=n
+   while 0<i do i:=i-1
+   {* i=0 *}
+
+Let's write a formal proof of the validity of this specification. 
+
+First, the proof plan is given below:
+
+   {* 0<=n, see Pinit *} 
+   i:=n
+   {* I , see PEC,PIC,PTC1,PTC2, using m = i *}
+   while 0<i do i:=i-1
+   {* i=0 *}
+
+   ASSUMING
+   I = 0<=i
+
+The proof plan refers to a number proofs; some of them are below. All
+are trivial; they are just for the sake of example. 
+   
+----------------
+Pinit
+A : 0<=n
+G : wp (i:=n) I
+----------------
+
+1. { def. of I + wp calculation }  G = 0<=n
+
+2. { follows trivially from 1} 0<=n = G
+
+2. {* rewrite A with 2 } G
+
+END -------------
+
+
+----------------
+PEC
+A1 : I 
+A2 : ~(0<i)
+G  : i=0 
+----------------
+
+1 { arithmetics } ~(0<i) = i<=0
+
+2. { rewrite A2 with 1} i<=0
+
+3 { rewrite A1 with def. of I } 0<=i
+
+4. { follows from 2 and 3 } i=0
+
+
+END -------------
+
+
+----------------
+PIC
+A1 : 0<=i
+A2 : 0<i
+G  : wp (i:=i-1) I
+----------------
+
+1. { def. of I + wp calculation }  0<=i-1 = G
+
+2. { arithmetics }   i<0 ==> 0<=i-1 
+
+3. { MP on A2 and 2 }   0<=i-1 
+
+4. { rewrite 3 with 1 }  G
+
+END -------------
+
+
+----------------
+PTC1
+A1 : I
+A2 : 0<i
+G  : wp (C:=i; i:=i-1) i<C
+----------------
+
+1. { def. of I + wp calculation }  i-1<i = G
+
+2. { arithmetic } i-1<i
+
+3. { rewrite 2 with 1 } G
+
+END -------------
+
+
+----------------
+PTC2
+A1 : I
+A2 : 0<i
+G  : i>0
+----------------
+
+well ... trivial :)
+
+END -------------

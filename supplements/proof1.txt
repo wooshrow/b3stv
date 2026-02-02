@@ -1,0 +1,42 @@
+** 
+** This is an example of a proof in the ASCII format.
+**
+
+We are going to prove: (FORALL i: 0<=i : b[i]) ==> (EXISTS i:: ~b[i]==>i<0)
+
+Notation: 
+
+  * FORALL is used for the universal quantifier
+  * EXISTS for the existential quantifier
+  * ~ is used for negation
+
+The proof:
+
+----------------------------------------------
+PROOF main
+A : (FORALL i: 0<=i : b[i])
+G : (EXISTS i:: ~b[i]==>i<0)
+----------------------------------------------
+
+1. { FORALL-elimination on A }  
+
+   0<=i ==> b[i]
+
+2. { rewrite 1 with Contraposition } // note: the theorem is in your appendix
+
+   ~b[i] ==> ~(0<=i)   
+
+3. { arithmetics } 
+
+   ~(0<=i) = i<0 
+
+4. { use 3 to rewrite 2 }
+
+   ~b[i] ==> i<0   
+
+4. { EXISTS-introduction on 3}  
+
+   (EXISTS i:: ~b[i]==>i<0)
+
+END -------------------------------------------
+      
