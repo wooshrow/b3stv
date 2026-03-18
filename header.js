@@ -2,7 +2,7 @@ var header =
      '<div class="row"> <!-- row 1 -->' +
      '<div class="six columns">' +
 	 '<img src="logo.jpg" class="img-circle" height="30%" width="30%" >' +
-	  '<h5>Course Software Testing &amp; Verification 2024/25</h5>' +
+	  '<h5>Course Software Testing &amp; Verification 2025/26</h5>' +
       '</div>' +
       '<div id="nav" class="six columns">' +
       '  <a mystyle="navbutton2" href="javascript:history.go(0)">refresh</a>' +
@@ -13,9 +13,9 @@ var header =
       '  <div class="twelve columns">' +
       '  <a class="button" href="index.html">news</a> &nbsp; ' +
       '  <a class="button" href="plan.html">course plan</a> &nbsp; ' +
-      '  <a class="button" href="https://osiris-student.uu.nl/onderwijscatalogus/extern/cursus?cursuscode=INFOB3STV&collegejaar=2024">course info @osiris</a>  &nbsp;' +
+      '  <a class="button" href="https://osiris-student.uu.nl/onderwijscatalogus/extern/cursus?cursuscode=INFOB3STV&collegejaar=2025">course info @osiris</a>  &nbsp;' +
       '  <a class="button" href="material.html">Materials</a>' +
-      '  <a class="button" href="https://cs.gmu.edu/~offutt/softwaretest/">IST book site</a>' +
+      '  <a class="button" href="https://www.albany.edu/faculty/offutt/softwaretest/">IST book site</a>' +
       '  <a class="button" href="https://www.cprover.org/cbmc/">CBMC</a>' +
 
 // well rie4fun has been taken off-line :|, codeplex too.

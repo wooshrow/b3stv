@@ -77,16 +77,93 @@ but I like it better than the new 2nd-ed.
 
 <p><li>In recent runs of the course, exercises are written on shared
   mswords-document. This facilitates better feedback. So we mainly use
-  the ASCII-format. But just for the purpose if you want to produce LaTeX
-  for your own records, here is <b>LaTeX macro</b> for writing proofs:
+  the ASCII-format. But just for the purpose if you want to produce LaTeX,
+  here is <b>LaTeX macro</b> for writing proofs:
          <a href="supplements/pncproofmacros.sty">pncproofmacro.sty</a>.
          Example of its use: <a href="supplements/example.tex">example.tex</a>
          (pdf <a href="supplements/example.pdf">output</a>).
+</ul>
 
+<p>
+<h4>Beyond the Course Material</h4>
 
+Several links to research literature are listed below.
+Just to be clear, this is not exam material. Just for your
+curiosity.
 
+<ul>
+
+  <li><b>Automated testing</b>
+
+<p>One of the leading automated testing techniques is
+  so-called search-based test (SBT), where you use search
+  algorithms like evolutionary algorithms to find test inputs
+  that would maximize your coverage. A standard starting literature for
+  SBT is the survey paper by McMinn. It is a bit old by now, but it
+  is still a good starting point. Many of the more modern work on
+automated testing uses this idea of search-based.
+
+<p>McMinn, <a href="https://www.academia.edu/download/33971461/sbst.pdf">Search‐based software test data
+generation: a survey</a>.
+In the Journal of
+Software testing, Verification and reliability, 14(2), 2004.
+
+<p>Complementary to SBT is the symbolic execution approach, closely related to
+the verification approach from your 2nd part of the course.
+The symbolic  approach exploits full semantic of the program,
+whereas with SBT we don't do this. Each approach (SBT vs symbolic)
+has its own strength and weakness.
+
+<p>Baldoni et al. <a href="https://arxiv.org/pdf/1610.00502">A survey of symbolic execution techniques</a>.
+ACM Computing Surveys (CSUR), 51(3), 2018.
+
+<p><li><b>Proof asssitants</b>
+
+To really produce formal proofs for larger problems you would
+want to use a proof assistant tool. Such a tool contains an
+implementation of logic rules. When you write a proof, it will
+be checked by the tool and the proof is really according to the
+rules. Most proof assistants also include a language layer that
+allows you to write proofs more abstractly (but still have the
+generated low level proof checked), and they often also have
+automation libraries that can do automated proving for certain
+types of problems.
+
+<p>Some popular proof assistants:
+   <a href="https://rocq-prover.org/">ROCQ</a>,
+   <a href-"https://wiki.portal.chalmers.se/agda/pmwiki.php">Agda</a>,
+   <a href="https://isabelle.in.tum.de/">Isabelle</a>,
+   <a href="https://hol-theorem-prover.org/">HOL4</a>.
+
+<p><li><b>Theorem Provers</b>
+
+A theorem prover can automatically prove a formula. Of course
+in general this is an undecidable proble, so every prover has
+its own range of decidability. Such a tool is typially not used
+to assist you in writing proofs. Rather, it is used as a backend
+for e.g. augomated progam verification or testing tools.
+
+<p>They are usually implemented as a model finder ('SAT' solver).
+For example, given a formula <i>p ∧ (q ⇒ r) ⇒ r</i> a SAT
+solver tries to find an instance of value assignment for p,q,r
+that would make the formula true. if so, the formula is said
+to be <i>satisfiable</i>. For example, for that example formula
+p=true,q=true,r=true would make the formula true.
+So, the formula is satisfiable.
+
+<p>If you want
+to know if the formula is <i>valid</i> (true for all value assignments
+to its free variables), we can check whether its <i>negation</i>, so: <i>¬(p ∧ (q ⇒ r) ⇒ r)</i>,
+has a model (is satisfiable). If it does, the formula has a counter
+example; so it is not valid. If it does not, then the formula is valid.
+
+<p>Some popular theorem provers:
+  <a href="https://cvc5.github.io/">CVC</a>
+  and
+  <a href=""https://github.com/Z3Prover">Z3</a>.
 
 </ul>
+
 
 </div>  <!-- row 3 -->
 </div><!-- container -->
